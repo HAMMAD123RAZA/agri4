@@ -37,7 +37,7 @@ const Contact = () => {
     <CiLocationOn size={50}/>
     <p className='font-bold py-4'>Address</p>  
         <div className='py-3'>
-            Karachi ,Pakistan
+            Pakistan
             <div className='py-3'>
                 address line steet#1
             </div>

@@ -6,6 +6,8 @@ import About from './components/About';
 import { QueryClient, QueryClientProvider } from 'react-query';
 // import Root from './components/Root';
 import Contact from './components/Contact';
+import Harvester from './components/Harvester';
+import Footer from './components/Footer';
 
 const App = () => {
   const slides=["bg.avif","bgav.avif"];
@@ -22,11 +24,13 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About slides={slides} />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/harvester" element={<Harvester />} />
 
         </Routes>
+        <Footer/>
+
       </div>
     </Router>
-
 
      </QueryClientProvider>
     </>
