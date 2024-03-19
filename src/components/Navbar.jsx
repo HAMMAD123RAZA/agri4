@@ -3,26 +3,28 @@ import NavLink from "./CustomLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { TiLeaf } from "react-icons/ti";
+
 import Home from "./Home";
 
 const navLinks = [
   {
     title: "Home",
-    path: "#home",
+    path: "/",
   },
 
   {
     title: "About",
-    path: "#about",
+    path: "/about",
   },
   {
     title: "Contact",
-    path: "#contact",
+    path: "/contact",
   },
   {
     title: "Harvester",
-    path: "#harvester",
-  },
+    path: "/harvester",
+  }
 ];
 
 const Navbar = () => {
@@ -30,13 +32,16 @@ const Navbar = () => {
 
   return (
     <>
-       <nav className="fixed mx-auto border border-green-700 top-0 left-0 right-0 z-10 bg-gray-500  bg-opacity-100">
+       <nav className="fixed mx-auto border border-green-700 top-0 left-0 right-0 z-10 bg-transparent  bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
           className="text-2xl text-secondary-400 md:text-5xl font-semibold"
         >
-            <p className="text-2xl text-white">Agri<span className="text-green-700">Drone</span> </p>
+<div className="flex items-center">
+  <p className="text-2xl text-green-700">Agri<span className="text-black">Drone</span></p>
+  <TiLeaf color="green" size={40} />
+</div>
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

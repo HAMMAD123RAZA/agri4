@@ -1,28 +1,85 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Marker, MapContainer, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import L from "leaflet";
+import "leaflet.heat";
+import axios from 'axios';
+import { useQuery, QueryClient, QueryClientProvider } from 'react-query';
+import { useState } from 'react';
+import Navbar from "./Navbar";
 
-const Home = () => {
-  // Define the position for the center of the map
-  const position = [51.505, -0.09]; // Example coordinates (London)
+function LocationMarker() {
+  const [position, setPosition] = useState(null);
+  const map = useMapEvents({
+    click() {
+      map.locate();
+    },
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
+  });
+
+  return position === null ? null : (
+    <Marker position={position}>
+      <Popup>You are here</Popup>
+    </Marker>
+  );
+}
+
+async function Fetchdata() {
+  const data = await axios.get('http://127.0.0.1:8000/fetch_coordinates');
+  return data;
+}
+
+const queryClient = new QueryClient();
+
+export default function Home() {
+  const { data, isSuccess } = useQuery("mydata", Fetchdata);
 
   return (
-    <div className='flex flex-col justify-center items-center h-screen'>
-      <div className='text-6xl font-semibold text-center my-12'>
-        {/* MapContainer should be the root element */}
-        <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{ width: '100%', height: '400px' }}>
+    <>
+<div className="">
+
+    <QueryClientProvider client={queryClient}>
+      <div id="home">
+      <MapContainer
+  style={{ width: "100vw", height: "100vh" }}
+  attributionControl={false}
+  center={[30.93925700144764, 69.5339985983349]}
+  zoom={12}
+  zoomControl={true} 
+  markerZoomAnimation={true}
+  scrollWheelZoom={true}
+>
+          <HeatMap />
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
+          <Marker position={[30.93925700144764, 69.5339985983349]}>
+            <Popup>This is marker</Popup>
           </Marker>
+          <LocationMarker />
         </MapContainer>
       </div>
+    </QueryClientProvider>
     </div>
+
+    </>
   );
 };
 
-export default Home;
+function HeatMap() {
+  const { data, isSuccess } = useQuery("mydata", Fetchdata);
+  const map = useMap();
+
+  if (!isSuccess) {
+    return <div>Error loading data</div>;
+  }
+
+  const addressPoints = data.data.map(function (p) {
+    return [p.latitude, p.longitude, p.opacity];
+  });
+
+  var heat = L.heatLayer(addressPoints, { radius: 25 }).addTo(map);
+
+  return null;
+}
