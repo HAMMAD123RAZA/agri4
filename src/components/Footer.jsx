@@ -9,43 +9,36 @@ import { FaInstagramSquare } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-        <div id='contact' className=' bg-gray-200 '>
-        <div className='grid grid-cols-3 lg:px-28'>
-    <div className='py-3 '>
-    <CiPhone size={50} />
+        <div id='contact' className=' bg-black '>
+        <div className='grid grid-cols-2 lg:px-28'>
+        <div className='text-white grid-col-1 py-3'>
+    <span style={{ verticalAlign: 'middle', display: 'inline-flex', alignItems: 'center' }}>
+        <CiLocationOn size={30} color='green' /> 
+        <span style={{ marginLeft: '10px' }}>Street line 1, Islamabad </span> 
+    </span>
 
-      <p className='font-bold text-green-700 py-4'>Phone</p>  
-        <div className='py-3'>
-            48549443
-        </div>
-        <div className='py-3'>
-            656565
-        </div>
+<div className='my-3'>
+
+    <span style={{ verticalAlign: 'middle', display: 'inline-flex', alignItems: 'center' }}>
+        <CiPhone size={30} color='green'/> 
+        <span style={{ marginLeft: '10px' }}>9450435043 </span> 
+    </span>
     </div>
-    <div className='py-3'>
-    <CiLocationOn size={50}/>
-    <p className='font-bold text-green-700 py-4'>Address</p>  
-        <div className='py-3'>
-            Pakistan
-            <div className='py-3'>
-                address line steet#1
-            </div>
-        </div>
-    </div>
-    <div className='py-3'> 
-        <MdOutlineMail  size={50} />
-    <p className='font-bold text-green-700 py-4'>Email</p>  
-        <div className='py-3'>
-       abc@gmail.com
+    <div>
 
-        </div>
-        <div className='py-3'>
-      xyz@gmail.com
+<span style={{ verticalAlign: 'middle', display: 'inline-flex', alignItems: 'center' }}>
+    <MdOutlineMail size={30} color='green'/> 
+    <span style={{ marginLeft: '10px' }}>abc@gmail.com </span> 
+</span>
+</div>
 
-        </div>
+</div>
+
+    <div className='text-white grid-col-1 py-3'>
+        <h3 className='text-green-700 text-2xl'>About Company</h3>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid maxime dolorem id. Ratione vero eos nostrum blanditiis dolores id consequatur aliquam error assumenda repudiandae. 
     </div>
         </div>
-
     </div>
 
     </>
