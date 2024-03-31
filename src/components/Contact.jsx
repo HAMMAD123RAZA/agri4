@@ -7,6 +7,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Footer from './Footer';
 
 const Contact = () => {
     useEffect(() => {
@@ -74,6 +75,8 @@ const Contact = () => {
 
         </div>
     </div>
+    {/* <Footer/> */}
+
     </>
   )
 }

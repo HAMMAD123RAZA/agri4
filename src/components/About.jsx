@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Footer from "./Footer";
 
 
 export default function About({ slides }) {
@@ -64,6 +65,8 @@ Join us on our journey to reimagine agriculture for the 21st century. Together, 
 
 </div>
 </div>
+{/* <Footer/> */}
+
 </>
 
   );
