@@ -24,13 +24,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About slides={slides} />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/harvester" element={<Harvester />} />
-          
+          <Route path="/harvester" element={<Harvester />} />          
           <Route path="*" element={<h1 className='text-center text-2xl font-bold' >404</h1>} />
-
-
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
 
       </div>
     </Router>
